@@ -7,8 +7,13 @@ const Player = ({name, symbol}) => {
     setEditing(!editing);
   }
 
-  let playerName = editing ? <span className="player-name">{name}</span> : <input type="text" required />;
-  let label = editing ? "Save" : "Edit";
+  let playerName = <span className="player-name">{name}</span>;
+  let buttonLabel = "Edit";
+
+  if (editing) {
+    playerName = <input type="text" required />;
+    buttonLabel = "Save";
+  }
 
   return (
     <li>
@@ -16,7 +21,7 @@ const Player = ({name, symbol}) => {
         {playerName}
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button onClick={handleEdit}>{label}</button>
+      <button onClick={handleEdit }>{buttonLabel}</button>
     </li>
   );
 }
